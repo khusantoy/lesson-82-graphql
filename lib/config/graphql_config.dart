@@ -9,9 +9,11 @@ class GraphQLConfig {
   static ValueNotifier<GraphQLClient> initializeClient() {
     final Link link = httpLink;
 
-    return ValueNotifier(GraphQLClient(
-      link: link,
-      cache: GraphQLCache(),
-    ));
+    return ValueNotifier(
+      GraphQLClient(
+        link: link,
+        cache: GraphQLCache(),
+      ),
+    );
   }
 }

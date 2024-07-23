@@ -28,12 +28,14 @@ mutation addProduct(
 """;
 
 const String updateProduct = """
-mutation UpdateProduct(\$id: ID!, \$title: String, \$price: Float, \$description: String, \$categoryId: ID) {
-  updateProduct(id: \$id, input: {
-    title: \$title,
-    price: \$price,
-    description: \$description,
-    categoryId: \$categoryId
+mutation updateProduct (\$id: ID!, \$title: String, \$price: Float, \$description: String, \$categoryId: Float) {
+  updateProduct(
+    id: \$id,
+    changes: {
+      title: \$title,
+      price: \$price,
+      description: \$description,
+      categoryId: \$categoryId
   }) {
     id
     title
