@@ -28,7 +28,7 @@ mutation addProduct(
 """;
 
 const String updateProduct = """
-mutation updateProduct (\$id: ID!, \$title: String, \$price: Float, \$description: String, \$categoryId: Float) {
+mutation UpdateProduct (\$id: ID!, \$title: String, \$price: Float, \$description: String, \$categoryId: Float) {
   updateProduct(
     id: \$id,
     changes: {
@@ -49,9 +49,7 @@ mutation updateProduct (\$id: ID!, \$title: String, \$price: Float, \$descriptio
 """;
 
 const String deleteProduct = """
-mutation DeleteProduct(\$id: ID!) {
-  deleteProduct(id: \$id) {
-    id
-  }
+mutation DeleteProduct (\$id: ID!) {
+    deleteProduct(id: \$id)
 }
 """;

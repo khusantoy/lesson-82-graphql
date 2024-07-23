@@ -210,6 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 MutationOptions(
                                                   document: gql(updateProduct),
                                                   variables: {
+                                                    'id': product['id'],
                                                     'title':
                                                         titleController.text,
                                                     'price': 10.0,
@@ -250,7 +251,30 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                final client =
+                                    GraphQLProvider.of(context).value;
+                                client.mutate(
+                                  MutationOptions(
+                                    document: gql(deleteProduct),
+                                    variables: {'id': product['id']},
+                                    onCompleted: (data) {
+                                      print(data);
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content: Center(
+                                            child: Text("Deleted product"),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    onError: (error) {
+                                      print(error);
+                                    },
+                                  ),
+                                );
+                              },
                               icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
